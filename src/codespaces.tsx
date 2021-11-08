@@ -1,10 +1,9 @@
-import {List, getLocalStorageItem, setLocalStorageItem} from '@raycast/api'
+import {getLocalStorageItem, List, setLocalStorageItem} from '@raycast/api'
 import {ReactElement, useEffect, useState} from 'react'
-
-import CodespaceItem from './components/codespace-item'
-import {octokit} from './lib/octokit'
 import {useQuery} from 'react-query'
+import CodespaceItem from './components/codespace-item'
 import withQueryClient from './components/with-query-client'
+import {octokit} from './lib/octokit'
 
 export interface Codespace {
   id: number

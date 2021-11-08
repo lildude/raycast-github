@@ -12,7 +12,65 @@
       "subtitle": "Open and control GitHub Codespaces",
       "description": "This command provides a way to search and interact with your GitHub Codespaces",
       "icon": "icons/codespaces.png",
-      "mode": "view"
+      "mode": "view",
+      "keywords": [
+        "ghcs"
+      ]
+    },
+    {
+      "name": "search-code",
+      "title": "Search Code",
+      "subtitle": "Search code on GitHub",
+      "description": "This command provides a way to search code on GitHub",
+      "icon": "icons/code.png",
+      "mode": "view",
+      "keywords": [
+        "ghs"
+      ]
+    },
+    {
+      "name": "search-commits",
+      "title": "Search Commits",
+      "subtitle": "Search git commits on GitHub",
+      "description": "This command provides a way to search git commits on GitHub",
+      "icon": "icons/commit.png",
+      "mode": "view",
+      "keywords": [
+        "ghs"
+      ]
+    },
+    {
+      "name": "search-issues",
+      "title": "Search Issues & PRs",
+      "subtitle": "Search issues and pull requests on GitHub",
+      "description": "This command provides a way to search issues and pull requests on GitHub",
+      "icon": "icons/issue-opened.png",
+      "mode": "view",
+      "keywords": [
+        "ghs"
+      ]
+    },
+    {
+      "name": "search-repos",
+      "title": "Search Repositories",
+      "subtitle": "Search repositories on GitHub",
+      "description": "This command provides a way to search repositories on GitHub",
+      "icon": "icons/repo.png",
+      "mode": "view",
+      "keywords": [
+        "ghs"
+      ]
+    },
+    {
+      "name": "search-users",
+      "title": "Search Users",
+      "subtitle": "Search users on GitHub",
+      "description": "This command provides a way to search users on GitHub",
+      "icon": "icons/person.png",
+      "mode": "view",
+      "keywords": [
+        "ghs"
+      ]
     }
   ],
   "dependencies": {
@@ -42,6 +100,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-github": "^4.3.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.4",
@@ -57,9 +116,12 @@
     "build:extension": "ray build -e dist",
     "build:octicons": "rm -f assets/icons/*.png && script/build-icons",
     "dev": "ray develop",
-    "check": "run-p -l --continue-on-error --aggregate-output check:*",
+    "check": "run-p --continue-on-error --aggregate-output check:*",
     "check:build": "tsc --noEmit",
-    "check:format": "prettier . --check",
-    "check:lint": "eslint ."
+    "check:format": "prettier . --check --loglevel=warn",
+    "check:lint": "eslint .",
+    "fix": "run-s --continue-on-error fix:*",
+    "fix:format": "prettier . --write --loglevel=warn",
+    "fix:lint": "eslint . --fix"
   }
 }

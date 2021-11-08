@@ -1,16 +1,15 @@
-import {QueryClient, QueryClientProvider} from 'react-query'
-
 import {ComponentType} from 'react'
+import {QueryClient, QueryClientProvider} from 'react-query'
 
 const queryClient = new QueryClient()
 
-export default function withQueryClient(
-  Component: ComponentType
-): ComponentType {
-  return function WithQueryClient() {
+export default function withQueryClient<P = unknown>(
+  Component: ComponentType<P>
+): ComponentType<P> {
+  return function WithQueryClient(props: P) {
     return (
       <QueryClientProvider client={queryClient}>
-        <Component />
+        <Component {...props} />
       </QueryClientProvider>
     )
   }
